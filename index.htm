@@ -224,9 +224,13 @@
         $('#color-block').on('colorchange', function(e) {
           var color = $(this).wheelColorPicker('value');
           var alpha = $(this).wheelColorPicker('color').a;
+          var xhttp = new XMLHttpRequest();
+          var callAPI = "https://cambrianopenhouse.azurewebsites.net/api/pin/"
           $('.color-preview-box').css('background-color', color);
           $('.color-preview-text').text(color);
           $('.color-preview-alpha').text(Math.round(alpha * 100) + '%');
+          xhttp.open("POST", callAPI.concat(color), true);
+          xhttp.send();
         });
       });
       </script>
